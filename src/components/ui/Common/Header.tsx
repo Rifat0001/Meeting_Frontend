@@ -1,5 +1,6 @@
 import logo from '../../../assets/icons/chat.png';
-
+import { IoIosLogIn } from "react-icons/io";
+import { IoIosLogOut } from "react-icons/io";
 const Header = () => {
     return (
         <div className="navbar bg-black px-5 lg:px-10">
@@ -32,38 +33,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                        <div className="indicator bg-violet-500 p-2 rounded ">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="white">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                            <span className="badge badge-sm indicator-item"></span>
-                        </div>
-                    </div>
-                    <div
-                        tabIndex={0}
-                        className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-40 shadow">
-                        <div className="card-body">
-                            <span className="text-lg font-bold">Items Added</span>
-                            <span className="">Total: <span className="text-violet-400 font-bold">$</span></span>
-                            <div className="card-actions">
-                                <a href="/product/cart" className='w-full'>
-                                    <button className="btn bg-violet-500 hover:bg-violet-600 text-white">View cart</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <button className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Login <IoIosLogIn className='text-2xl' /></button>
             </div>
         </div>
     );

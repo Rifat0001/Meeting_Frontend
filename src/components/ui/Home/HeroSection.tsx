@@ -4,6 +4,7 @@ import 'tailwindcss/tailwind.css';
 import bg1 from '../../../assets/images/bg1.jpg';
 import bg2 from '../../../assets/images/bg2.jpg';
 import bg3 from '../../../assets/images/bg3.jpg';
+import { GrLinkNext } from "react-icons/gr";
 import { NavLink } from 'react-router-dom';
 import { Fade } from 'react-awesome-reveal';
 interface Slide {
@@ -60,11 +61,11 @@ const HeroSection = () => {
                 >
                     <div className="flex flex-col items-center space-y-4 justify-center w-full h-full bg-black bg-opacity-50">
                         <Fade delay={1e2} cascade damping={1e-1}>
-                            <h1 className="text-3xl lg:text-5xl text-center font-bold text-white">{slide.heading}</h1></Fade>
+                            <h1 className="text-3xl lg:text-5xl text-center font-semibold text-white">{slide.heading}</h1></Fade>
                         <p className="text-md lg:text-xl text-center text-gray-300">{slide.subheading}</p>
                         <>
-                            <button className='btn bg-black font-bold lg:px-8 lg:text-lg hover:bg-white hover:text-black
-                              border-black border-2  hover:border-black text-white '>Explore</button></>
+                            <button className='btn bg-black font-semibold lg:px-8 lg:text-lg hover:bg-white hover:text-black
+                              border-black border-2  hover:border-black text-white '>Explore <GrLinkNext /></button></>
                     </div>
                 </div>
             ))}
