@@ -1,6 +1,7 @@
 import logo from '../../../assets/icons/chat.png';
 import { IoIosLogIn } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
+import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <div className="navbar bg-black px-5 lg:px-10">
@@ -14,26 +15,27 @@ const Header = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a href="/" className='font-bold text-black hover:text-blue-600'>Home</a></li>
-                        <li><a href="/product" className='font-bold text-black hover:underline'>Product</a></li>
-                        <li><a href="/product/management" className='font-bold text-black hover:underline'>Dashboard</a></li>
-                        <li><a href="/about-us" className='font-bold text-black hover:underline'>About Us</a></li>
-                        <li><a href="/contact-us" className='font-bold text-black hover:underline'>Contact Us</a></li>
+                        <li><NavLink className='font-bold text-black hover:text-violet-500' to='/'>Home</NavLink></li>
+                        <li><NavLink className='font-bold text-black hover:text-violet-500' to='/product'>Product</NavLink></li>
+                        <li><NavLink className='font-bold text-black hover:text-violet-500' to='/product/management'>Dashboard</NavLink></li>
+                        <li><NavLink className='font-bold text-black hover:text-violet-500' to='/about-us'>About Us</NavLink></li>
+                        <li><NavLink className='font-bold text-black hover:text-violet-500' to='/contact-us'>Contact Us</NavLink></li>
                     </ul>
                 </div>
                 <a href="/"><img src={logo} className="lg:w-[50px] w-20" alt="" /></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a href="/" className='font-bold text-white  hover:underline'>Home</a></li>
-                    <li><a href="/product" className='font-bold text-white hover:underline'>Product</a></li>
-                    <li><a href="/product/management" className='font-bold text-white hover:underline'>Dashboard</a></li>
-                    <li><a href="/about-us" className='font-bold text-white hover:underline'>About Us</a></li>
-                    <li><a href="/contact-us" className='font-bold text-white hover:underline'>Contact Us</a></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/'>Home</NavLink></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/product'>Product</NavLink></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/product/management'>Dashboard</NavLink></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/about-us'>About Us</NavLink></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/contact-us'>Contact Us</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
-            <button className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Login <IoIosLogIn className='text-2xl' /></button>
+                <NavLink to='/login'>
+                    <button className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Login <IoIosLogIn className='text-2xl' /></button></NavLink>
             </div>
         </div>
     );

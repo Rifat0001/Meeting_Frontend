@@ -1,12 +1,8 @@
-import Header from "./components/ui/Common/Header";
-import HeroSection from "./components/ui/Home/HeroSection";
+import MainLayout from "./components/layout/MainLayout";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <HeroSection/>
-    </div>
+    <MainLayout/>
   );
 };
 

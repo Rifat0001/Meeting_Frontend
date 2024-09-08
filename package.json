@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
+    "@reduxjs/toolkit": "^2.2.7",
     "antd": "^5.20.5",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-awesome-reveal": "^4.2.13",
     "react-dom": "^18.3.1",
@@ -24,6 +26,7 @@
     "react-slick": "^0.30.2",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
+    "sonner": "^1.5.0",
     "sweetalert2": "^11.6.13",
     "swiper": "^11.1.8"
   },
