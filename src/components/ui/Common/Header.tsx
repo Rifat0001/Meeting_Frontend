@@ -2,7 +2,22 @@ import logo from '../../../assets/icons/chat.png';
 import { IoIosLogIn } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { logout, useCurrentToken } from '../../../redux/features/auth/authSlice';
+import { verifyToken } from '../../../utils/verifyToken';
 const Header = () => {
+    const token = useAppSelector(useCurrentToken);
+
+    let user;
+
+    if (token) {
+        user = verifyToken(token);
+    }
+
+    const dispatch = useAppDispatch();
+    const handleLogout = () => {
+        dispatch(logout());
+    };
     return (
         <div className="navbar bg-black px-5 lg:px-10">
             <div className="navbar-start">
@@ -34,8 +49,8 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to='/login'>
-                    <button className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Login <IoIosLogIn className='text-2xl' /></button></NavLink>
+                {!user ? <NavLink to='/login'>
+                    <button className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Login <IoIosLogIn className='text-2xl' /></button></NavLink> : <button onClick={handleLogout} className='btn bg-white border-white font-semibold lg:px-4 btn-sm lg:text-lg hover:bg-black hover:text-white  border-2  hover:border-white text-black '>Log Out<IoIosLogOut className='text-2xl' /></button>}
             </div>
         </div>
     );

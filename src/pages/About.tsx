@@ -1,8 +1,10 @@
-import { selectCurrentUser } from "../redux/features/auth/authSlice";
+import { selectCurrentUser, useCurrentToken } from "../redux/features/auth/authSlice";
+import { useAppSelector } from "../redux/hooks";
+import { verifyToken } from "../utils/verifyToken";
 
 const About = () => {
-    const user = selectCurrentUser;
-    console.log(user)
+    const token = useAppSelector(selectCurrentUser);
+    console.log(token)
     return (
         <div>
             <h1>About page</h1>

@@ -1,39 +1,37 @@
-import { Button, Row } from 'antd';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues} from 'react-hook-form';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hooks';
-import { setUser, TUser } from '../redux/features/auth/authSlice';
-import { verifyToken } from '../utils/verifyToken';
+import { setUser } from '../redux/features/auth/authSlice';
 import MyForm from '../components/form/MyForm';
 import MyInput from '../components/form/MyInput';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import PassWord from '../components/form/PassWord';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const defaultValues = {
-    userId: 'abc@gmail.com',
+    email: 'abc@gmail.com',
     password: 'ph-password',
   };
 
   const [login] = useLoginMutation();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
     const toastId = toast.loading('Logging in');
-
     try {
       const userInfo = {
-        email: data.userId,
+        email: data.email,
         password: data.password,
       };
+
       const res = await login(userInfo).unwrap();
-      const user = verifyToken(res.data.accessToken) as TUser;
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      console.log(res)
+      console.log('user')
+      dispatch(setUser({ user: res.data.name, token: res.token }));
       toast.success('Logged in', { id: toastId, duration: 2000 });
       navigate('/');
-
     } catch (err) {
       toast.error('Something went wrong', { id: toastId, duration: 2000 });
     }
@@ -41,13 +39,19 @@ const Login = () => {
 
 
   return (
-    <Row justify="center" align="middle" style={{ height: '100vh' }}>
-      <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
-        <MyInput type="text" name="userId" label="ID:" />
-        <MyInput type="text" name="password" label="Password" />
-        <Button htmlType="submit">Login</Button>
-      </MyForm>
-    </Row>
+    <section className='flex h-[70vh] flex-col justify-center items-center '>
+      <h1 className='text-black text-2xl font-bold'>Login</h1>
+      <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
+        <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
+            <MyInput type="email" name="email" />
+          <PassWord  type="password" name="password" />
+          <div className="flex justify-between items-center  ">
+          <button type="submit" className='bg-black py-2 w-40 rounded-md px-5 hover:bg-black text-white'>Login</button>
+          <NavLink to='/signup' className='font-semibold hover:text-black hover:font-bold hover:underline underline'>Crete an account</NavLink>
+          </div>
+        </MyForm>
+      </div>
+    </section>
   );
 };
 
