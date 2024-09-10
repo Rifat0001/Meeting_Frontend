@@ -1,41 +1,39 @@
 import { FieldValues } from 'react-hook-form';
-import { useLoginMutation } from '../redux/features/auth/authApi';
+import { useSignupMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hooks';
 import { setUser } from '../redux/features/auth/authSlice';
 import MyForm from '../components/form/MyForm';
-import { FaUser } from "react-icons/fa";
-import { IoMail } from 'react-icons/io5';
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { toast } from 'sonner';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PassWord from '../components/form/PassWord';
-import { Input } from 'antd';
+import MyInput from '../components/form/MyInput';
+import UserName from '../components/form/UserName';
+import UserNumber from '../components/form/UserNumber';
+import UserLocation from '../components/form/UserLocation';
 const Registration = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const defaultValues = {
-        email: 'abc@gmail.com',
-        password: 'ph-password',
-    };
-
-    const [login] = useLoginMutation();
+    const [signup] = useSignupMutation();
 
     const onSubmit = async (data: FieldValues) => {
-        const toastId = toast.loading('Logging in');
+
+        const toastId = toast.loading('Creating an account...');
         try {
-            const userInfo = {
+            const signUpInfo = {
+                name: data.name,
                 email: data.email,
                 password: data.password,
+                phone: data.phone,
+                role: 'user',
+                address: data.address
             };
+            console.log(signUpInfo)
 
-            const res = await login(userInfo).unwrap();
-            console.log(res)
-            console.log('user')
+            const res = await signup(signUpInfo).unwrap();
             dispatch(setUser({ user: res.data.name, token: res.token }));
-            toast.success('Logged in', { id: toastId, duration: 2000 });
-            navigate('/');
+            toast.success('Account Created Successfully, Please Login', { id: toastId, duration: 2000 });
+            navigate('/login');
         } catch (err) {
             toast.error('Something went wrong', { id: toastId, duration: 2000 });
         }
@@ -44,36 +42,12 @@ const Registration = () => {
         <section className='flex h-[80vh] flex-col justify-center items-center '>
             <h1 className='text-black text-2xl font-bold'>Sign Up</h1>
             <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
-                <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
-                    <Input
-                        placeholder="Enter Your Name"
-                        prefix={<FaUser className='text-xl mr-2' />}
-                        type='text'
-                        size="large"
-                        style={{ marginBottom: '20px' }}
-                    />
-                    <Input
-                        placeholder="Enter Your Email"
-                        prefix={<IoMail className='text-xl mr-2' />}
-                        type='email'
-                        size="large"
-                        style={{ marginBottom: '20px' }}
-                    />
+                <MyForm onSubmit={onSubmit}>
+                    <UserName type='text' name='name' />
+                    <MyInput type="email" name="email" />
                     <PassWord type="password" name="password" />
-                    <Input
-                        placeholder="Enter Your Number"
-                        prefix={<FaPhoneAlt className='text-xl mr-2' />}
-                        type='number'
-                        size="large"
-                        style={{ marginBottom: '20px' }}
-                    />
-                    <Input
-                        placeholder="Enter Your Address"
-                        prefix={<FaLocationDot className='text-xl mr-2' />}
-                        type='number'
-                        size="large"
-                        style={{ marginBottom: '20px' }}
-                    />
+                    <UserNumber type='number' name='phone' />
+                    <UserLocation type='text' name='address' />
                     <div className="flex justify-between items-center  ">
                         <button type="submit" className='bg-black py-2 w-40 rounded-md px-5 hover:bg-black text-white'>Sign Up</button>
                         <NavLink to='/login' className='font-semibold hover:text-black hover:font-bold hover:underline underline'>Already have an account? Login</NavLink>

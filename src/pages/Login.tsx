@@ -21,12 +21,12 @@ const Login = () => {
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading('Logging in');
     try {
-      const userInfo = {
+      const loginInfo = {
         email: data.email,
         password: data.password,
       };
 
-      const res = await login(userInfo).unwrap();
+      const res = await login(loginInfo).unwrap();
       console.log(res)
       console.log('user')
       dispatch(setUser({ user: res.data.name, token: res.token }));
@@ -42,7 +42,7 @@ const Login = () => {
     <section className='flex h-[70vh] flex-col justify-center items-center '>
       <h1 className='text-black text-2xl font-bold'>Login</h1>
       <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
-        <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
+        <MyForm onSubmit={onSubmit} >
             <MyInput type="email" name="email" />
           <PassWord  type="password" name="password" />
           <div className="flex justify-between items-center  ">
