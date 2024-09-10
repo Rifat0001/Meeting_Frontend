@@ -37,13 +37,13 @@ const Header = () => {
                         <li><NavLink className='font-bold text-black hover:text-violet-500' to='/contact-us'>Contact Us</NavLink></li>
                     </ul>
                 </div>
-                <a href="/"><img src={logo} className="lg:w-[50px] w-20" alt="" /></a>
+                <NavLink to='/'><img src={logo} className="lg:w-[50px] w-20" alt="" /></NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink className='font-bold text-white hover:text-violet-500' to='/'>Home</NavLink></li>
                     <li><NavLink className='font-bold text-white hover:text-violet-500' to='/product'>Product</NavLink></li>
-                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/product/management'>Dashboard</NavLink></li>
+                    <li><NavLink className='font-bold text-white hover:text-violet-500' to='/dashboard'>Dashboard</NavLink></li>
                     <li><NavLink className='font-bold text-white hover:text-violet-500' to='/about-us'>About Us</NavLink></li>
                     <li><NavLink className='font-bold text-white hover:text-violet-500' to='/contact-us'>Contact Us</NavLink></li>
                 </ul>

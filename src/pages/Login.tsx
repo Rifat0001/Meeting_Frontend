@@ -7,6 +7,7 @@ import MyInput from '../components/form/MyInput';
 import { toast } from 'sonner';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PassWord from '../components/form/PassWord';
+import SignPasswrod from '../components/form/SignPasswrod';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -42,9 +43,9 @@ const Login = () => {
     <section className='flex h-[70vh] flex-col justify-center items-center '>
       <h1 className='text-black text-2xl font-bold'>Login</h1>
       <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
-        <MyForm onSubmit={onSubmit} >
+        <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
             <MyInput type="email" name="email" />
-          <PassWord  type="password" name="password" />
+          <SignPasswrod type='password' name='password' />
           <div className="flex justify-between items-center  ">
           <button type="submit" className='bg-black py-2 w-40 rounded-md px-5 hover:bg-black text-white'>Login</button>
           <NavLink to='/signup' className='font-semibold hover:text-black hover:font-bold hover:underline underline'>Crete an account</NavLink>
