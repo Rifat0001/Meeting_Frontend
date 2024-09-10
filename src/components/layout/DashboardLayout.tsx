@@ -18,26 +18,21 @@ const DashboardLayout = () => {
             <DashboardSideBar />
             <Layout>
                 <Header style={{ padding: 0, background: '#001529', paddingRight: '20px' }} >
-                    <div className="flex justify-between ">
-                    <p className='text-white'>Welcome {user ? JSON.stringify(user) : 'Guest'} </p>
-                    <NavLink to="/"><Button className='font-semibold'>Go Home</Button></NavLink>
+                    <div className="flex justify-end">
+                        <NavLink to="/"><Button className='font-semibold'>Go Home</Button></NavLink>
                     </div>
                 </Header>
-                <Content style={{ margin: '24px 16px 0' }}>
+                <Content style={{ margin: '24px 16px 0', background:'white' }}>
                     <div
                         style={{
                             padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
+                            background: 'white',
                             borderRadius: borderRadiusLG,
                         }}
                     >
-                        <Outlet/>
+                        <Outlet />
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
-                </Footer>
             </Layout>
         </Layout>
     );

@@ -1,4 +1,4 @@
-import { FieldValues} from 'react-hook-form';
+import { FieldValues } from 'react-hook-form';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hooks';
 import { setUser } from '../redux/features/auth/authSlice';
@@ -30,7 +30,7 @@ const Login = () => {
       const res = await login(loginInfo).unwrap();
       console.log(res)
       console.log('user')
-      dispatch(setUser({ user: res.data.name, token: res.token }));
+      dispatch(setUser({ user: res.data.name, token: res.token, role: res.data.role }));
       toast.success('Logged in', { id: toastId, duration: 2000 });
       navigate('/');
     } catch (err) {
@@ -44,11 +44,11 @@ const Login = () => {
       <h1 className='text-black text-2xl font-bold'>Login</h1>
       <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
         <MyForm onSubmit={onSubmit} defaultValues={defaultValues}>
-            <MyInput type="email" name="email" />
+          <MyInput type="email" name="email" />
           <SignPasswrod type='password' name='password' />
           <div className="flex justify-between items-center  ">
-          <button type="submit" className='bg-black py-2 w-40 rounded-md px-5 hover:bg-black text-white'>Login</button>
-          <NavLink to='/signup' className='font-semibold hover:text-black hover:font-bold hover:underline underline'>Crete an account</NavLink>
+            <button type="submit" className='bg-black py-2 w-40 rounded-md px-5 hover:bg-black text-white'>Login</button>
+            <NavLink to='/signup' className='font-semibold hover:text-black hover:font-bold hover:underline underline'>Crete an account</NavLink>
           </div>
         </MyForm>
       </div>

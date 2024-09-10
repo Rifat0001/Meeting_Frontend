@@ -10,6 +10,9 @@ import AddSlot from "../pages/AddSlot";
 import AddRoom from "../pages/AddRoom";
 import Booking from "../pages/Booking";
 import UserManagement from "../pages/UserManagement";
+import MyBookings from "../pages/MyBookings";
+import UserProfile from "../pages/UserProfile";
+import DashboardWish from "../pages/DashboardWish";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +47,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashboardLayout />,
+                element: <DashboardWish/>,
             },
             {
                 path: "addslot",
@@ -61,6 +64,14 @@ export const router = createBrowserRouter([
             {
                 path: "users",
                 element: <UserManagement />,
+            },
+            {
+                path: "mybookings",
+                element: <MyBookings />,
+            },
+            {
+                path: "myprofile",
+                element: <UserProfile />,
             },
         ],
     },
