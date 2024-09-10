@@ -8,11 +8,6 @@ import MyForm from '../components/form/MyForm';
 import MyInput from '../components/form/MyInput';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
-type userInfoType = {
-  id: string,
-  password: string,
-};
-
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
