@@ -16,6 +16,11 @@ const DashboardSideBar = () => {
             icon: UserOutlined
         },
         {
+            label: 'AllRoom',
+            link: '/dashboard/allroom',
+            icon: UserOutlined
+        },
+        {
             label: 'AddSlot',
             link: '/dashboard/addslot',
             icon: VideoCameraOutlined

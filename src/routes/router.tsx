@@ -6,13 +6,14 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import Dashboard from "../pages/Dashboard";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import AddSlot from "../pages/AddSlot";
-import AddRoom from "../pages/AddRoom";
 import Booking from "../pages/Booking";
 import UserManagement from "../pages/UserManagement";
 import MyBookings from "../pages/MyBookings";
 import UserProfile from "../pages/UserProfile";
 import DashboardWish from "../pages/DashboardWish";
+import GetRooms from "../pages/Admin/GetRooms";
+import AddSlot from "../pages/Admin/AddSlot";
+import AddRoom from "../pages/Admin/AddRoom";
 
 export const router = createBrowserRouter([
     {
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashboardWish/>,
+                element: <DashboardWish />,
             },
             {
                 path: "addslot",
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             {
                 path: "addroom",
                 element: <AddRoom />,
+            },
+            {
+                path: 'allroom',
+                element: <GetRooms />
             },
             {
                 path: "bookings",

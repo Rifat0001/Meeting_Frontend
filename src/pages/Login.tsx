@@ -13,7 +13,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
   const defaultValues = {
-    email: 'abc@gmail.com',
+    email: 'a@gmail.com',
     password: 'ph-password',
   };
 
