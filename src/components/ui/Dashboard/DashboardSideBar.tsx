@@ -32,14 +32,14 @@ const DashboardSideBar = () => {
             icon: UserOutlined
         },
         {
-            label: 'Bookings',
-            link: '/dashboard/bookings',
-            icon: UploadOutlined
-        },
-        {
             label: 'UserManagement',
             link: '/dashboard/users',
             icon: UserOutlined
+        },
+        {
+            label: 'Bookings',
+            link: '/dashboard/bookings',
+            icon: UploadOutlined
         }
     ];
     const userItems = [
@@ -79,10 +79,10 @@ const DashboardSideBar = () => {
             style={{ height: '100vh', position: 'sticky', top: '0', left: '0' }}
             collapsedWidth="0"
             onBreakpoint={(broken) => {
-                console.log(broken);
+                // console.log(broken);
             }}
             onCollapse={(collapsed, type) => {
-                console.log(collapsed, type);
+                // console.log(collapsed, type);
             }}
         >
 

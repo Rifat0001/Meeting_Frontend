@@ -15,6 +15,7 @@ import GetRooms from "../pages/Admin/GetRooms";
 import AddSlot from "../pages/Admin/AddSlot";
 import AddRoom from "../pages/Admin/AddRoom";
 import GetSlots from "../pages/Admin/GetSlots";
+import GetUsers from "../pages/Admin/GetUsers";
 
 export const router = createBrowserRouter([
     {
@@ -73,7 +74,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "users",
-                element: <UserManagement />,
+                element: <GetUsers/> ,
             },
             {
                 path: "mybookings",

@@ -6,15 +6,14 @@ import MyForm from '../components/form/MyForm';
 import MyInput from '../components/form/MyInput';
 import { toast } from 'sonner';
 import { NavLink, useNavigate } from 'react-router-dom';
-import PassWord from '../components/form/PassWord';
 import SignPasswrod from '../components/form/SignPasswrod';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const defaultValues = {
-    email: 'a@gmail.com',
-    password: 'ph-password',
+    email: 'dev@gmail.com',
+    password: 'Rifa333@@#@',
   };
 
   const [login] = useLoginMutation();
@@ -28,8 +27,6 @@ const Login = () => {
       };
 
       const res = await login(loginInfo).unwrap();
-      console.log(res)
-      console.log('user')
       dispatch(setUser({ user: res.data.name, token: res.token, role: res.data.role }));
       toast.success('Logged in', { id: toastId, duration: 2000 });
       navigate('/');

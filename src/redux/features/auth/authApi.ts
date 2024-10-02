@@ -21,7 +21,7 @@ const authApi = baseApi.injectEndpoints({
 
     updateUserRole: builder.mutation({
       query: ({ userId, newRole }) => ({
-        url: `/user/${userId}`,
+        url: `/auth/user/${userId}`,
         method: "PUT",
         body: newRole,
       }),
@@ -30,15 +30,15 @@ const authApi = baseApi.injectEndpoints({
 
     getAllUser: builder.query({
       query: () => ({
-        url: '/user',
+        url: '/auth/user',
         method: 'GET',
       }),
       providesTags: ['user'],
     }),
 
     getSingleUser: builder.query({
-      query: ({ userId }) => ({
-        url: `/user/${userId}`,
+      query: ({ email }) => ({
+        url: `/auth/user/${email}`,
         method: 'GET',
       }),
       providesTags: ['user'],
@@ -46,21 +46,21 @@ const authApi = baseApi.injectEndpoints({
 
     deleteUser: builder.mutation({
       query: (userId) => ({
-        url: `/user/${userId}`,
+        url: `/auth/user/${userId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['user'],  // Invalidate the cache to refresh after deletion
     }),
 
-    update: builder.mutation({
-      query: ({ userId, newRole }) => ({
-        url: `/user/${userId}`,
+    updateAccountInfo: builder.mutation({
+      query: ({ userId, userInfo }) => ({
+        url: `/auth/user/update/${userId}`,
         method: "PUT",
-        body: newRole,
+        body: userInfo,
       }),
       invalidatesTags: ["user"],
     }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation } = authApi;
+export const { useLoginMutation, useSignupMutation, useGetAllUserQuery, useGetSingleUserQuery, useUpdateAccountInfoMutation, useUpdateUserRoleMutation, useDeleteUserMutation } = authApi;

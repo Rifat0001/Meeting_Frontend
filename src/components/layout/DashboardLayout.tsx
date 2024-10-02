@@ -12,7 +12,7 @@ const DashboardLayout = () => {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
     const user = useAppSelector(selectCurrentUser);
-    console.log(user)
+    // console.log(user)
     return (
         <Layout>
             <DashboardSideBar />
