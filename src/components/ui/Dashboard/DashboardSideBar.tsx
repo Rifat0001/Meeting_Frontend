@@ -4,7 +4,7 @@ import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/i
 import logo from '../../../assets/icons/chat.png';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../../redux/hooks';
-import { selectCurrentRole, useCurrentToken } from '../../../redux/features/auth/authSlice';
+import { selectCurrentRole, } from '../../../redux/features/auth/authSlice';
 import React from 'react';
 
 const DashboardSideBar = () => {
@@ -79,10 +79,10 @@ const DashboardSideBar = () => {
             style={{ height: '100vh', position: 'sticky', top: '0', left: '0' }}
             collapsedWidth="0"
             onBreakpoint={(broken) => {
-                // console.log(broken);
+                console.log(broken);
             }}
             onCollapse={(collapsed, type) => {
-                // console.log(collapsed, type);
+                console.log(collapsed, type);
             }}
         >
 

@@ -37,16 +37,17 @@ const authApi = baseApi.injectEndpoints({
     }),
 
     getSingleUser: builder.query({
-      query: ({ email }) => ({
-        url: `/auth/user/${email}`,
+      query: ({ id }) => ({
+        url: `/auth/user/${id}`,
         method: 'GET',
       }),
       providesTags: ['user'],
     }),
 
+
     deleteUser: builder.mutation({
-      query: (userId) => ({
-        url: `/auth/user/${userId}`,
+      query: (id) => ({
+        url: `/auth/user/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['user'],  // Invalidate the cache to refresh after deletion
