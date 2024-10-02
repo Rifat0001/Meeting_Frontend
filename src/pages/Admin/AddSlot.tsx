@@ -46,7 +46,7 @@ const AddSlot = () => {
     };
 
     return (
-        <section className='flex h-[100vh] flex-col justify-center items-center'>
+        <section className='flex h-[70vh] flex-col justify-center items-center'>
             <h1 className='text-black text-2xl font-bold'>Create Slots</h1>
             <div className='border p-5 w-[600px] mt-5 rounded-md shadow-lg'>
                 <MyForm onSubmit={onSubmit}>

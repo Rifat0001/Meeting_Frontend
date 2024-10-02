@@ -12,7 +12,7 @@ export type TRoomData = {
 };
 
 interface RoomTable {
-    key: string;
+    _id: string;
     name: string;
     roomNo: number;
     floorNo: number;
@@ -26,11 +26,13 @@ const GetRooms = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [form] = Form.useForm();
 
+    console.log(roomData)
+
     const [updateRoom] = useUpdateRoomMutation();
     const [deleteRoom] = useDeleteRoomMutation();
 
     const handleUpdate = (record: RoomTable) => {
-        setSelectedRoomId(record?.key); // Use record.key for the room ID
+        setSelectedRoomId(record?._id); // Use record.key for the room ID
         form.setFieldsValue({
             name: record.name,
             roomNo: record.roomNo,
@@ -63,7 +65,7 @@ const GetRooms = () => {
     const handleDelete = async (roomId: string) => {
         try {
             await deleteRoom(roomId);
-            console.log('room',roomId)
+            console.log('room', roomId)
             message.success('Room deleted successfully');
         } catch (error) {
             console.log(error)
@@ -73,7 +75,7 @@ const GetRooms = () => {
 
     const tableData = roomData?.data?.map(
         ({ _id, name, roomNo, floorNo, capacity, pricePerSlot }: RoomTable) => ({
-            key: _id,
+            _id: _id,
             name,
             roomNo,
             floorNo,
@@ -107,6 +109,7 @@ const GetRooms = () => {
             title: 'Price Per Slot',
             key: 'pricePerSlot',
             dataIndex: 'pricePerSlot',
+            render: (pricePerSlot: number) => `$${pricePerSlot}`,
         },
         {
             title: 'Action',
@@ -123,7 +126,7 @@ const GetRooms = () => {
                     </Button>
                     <Popconfirm
                         title="Are you sure to delete this room?"
-                        onConfirm={() => handleDelete(item.key)}
+                        onConfirm={() => handleDelete(item._id)}
                         okText="Yes"
                         cancelText="No"
                     >

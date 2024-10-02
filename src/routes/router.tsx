@@ -14,6 +14,7 @@ import DashboardWish from "../pages/DashboardWish";
 import GetRooms from "../pages/Admin/GetRooms";
 import AddSlot from "../pages/Admin/AddSlot";
 import AddRoom from "../pages/Admin/AddRoom";
+import GetSlots from "../pages/Admin/GetSlots";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allroom',
                 element: <GetRooms />
+            },
+            {
+                path: 'allslot',
+                element: <GetSlots />
             },
             {
                 path: "bookings",

@@ -16,6 +16,49 @@ const authApi = baseApi.injectEndpoints({
         method: 'POST',
         body: signUpInfo,
       }),
+      invalidatesTags: ["user"],
+    }),
+
+    updateUserRole: builder.mutation({
+      query: ({ userId, newRole }) => ({
+        url: `/user/${userId}`,
+        method: "PUT",
+        body: newRole,
+      }),
+      invalidatesTags: ["user"],
+    }),
+
+    getAllUser: builder.query({
+      query: () => ({
+        url: '/user',
+        method: 'GET',
+      }),
+      providesTags: ['user'],
+    }),
+
+    getSingleUser: builder.query({
+      query: ({ userId }) => ({
+        url: `/user/${userId}`,
+        method: 'GET',
+      }),
+      providesTags: ['user'],
+    }),
+
+    deleteUser: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['user'],  // Invalidate the cache to refresh after deletion
+    }),
+
+    update: builder.mutation({
+      query: ({ userId, newRole }) => ({
+        url: `/user/${userId}`,
+        method: "PUT",
+        body: newRole,
+      }),
+      invalidatesTags: ["user"],
     }),
   }),
 });
